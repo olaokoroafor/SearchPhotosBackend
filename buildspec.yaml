@@ -6,7 +6,7 @@ phases:
       - zip search-photos.zip lambda_function.py
   build:
     commands:
-      - aws cloudformation package --template-file unpacked.yaml --s3-bucket ooo2139-lambda-function --output-template-file packed.yaml
+      - aws lambda update-function-code --function-name search-photos --region us-east-1 --zip-file fileb://search-photos.zip 
 artifacts:
   files:
   - unpacked.yaml
