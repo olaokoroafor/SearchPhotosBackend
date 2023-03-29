@@ -1,0 +1,13 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - zip search-photos.zip lambda_function.py
+  build:
+    commands:
+      - aws cloudformation package --template-file unpacked.yaml --s3-bucket ooo2139-lambda-function --output-template-file packed.yaml
+artifacts:
+  files:
+  - unpacked.yaml
+  - packed.yaml
