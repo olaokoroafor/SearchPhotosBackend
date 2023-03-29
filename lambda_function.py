@@ -113,7 +113,6 @@ def lambda_handler(event, context):
             'body': json.dumps({"results":[]})
         }
 
-
 def ask_bot(msg_from_user):
     try:
         print(msg_from_user)
