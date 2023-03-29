@@ -3,7 +3,9 @@ version: 0.2
 phases:
   pre_build:
     commands:
-      - zip -r search-photos.zip .
+      - zip -r search-photos.zip search-photos/
+      - zip -r index-photos.zip index-photos/
   build:
     commands:
-      - aws s3 mv search-photos.zip s3://ooo2139-lambda-function
+      - aws s3 mv search-photos.zip s3://ooo2139-assignment2-lambda-functions
+      - aws s3 mv index-photos.zip s3://ooo2139-assignment2-lambda-functions
