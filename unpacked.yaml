@@ -10,7 +10,7 @@ Resources:
       Description: ''
       MemorySize: 128
       Timeout: 
-      CodeUri: ./search-photos.zip
+      CodeUri: .
       PackageType: Zip
       Role: 'arn:aws:iam::643696193634:role/service-role/index-photos-role-2fpdcbux'
       RuntimePolicy:
