@@ -131,3 +131,6 @@ def ask_bot(msg_from_user):
     except Exception as e:
         print(e)
         return None
+
+
+#download libraries: pip install {library} -t ./
