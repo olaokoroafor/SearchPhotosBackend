@@ -3,11 +3,7 @@ version: 0.2
 phases:
   pre_build:
     commands:
-      - zip search-photos.zip lambda_function.py
+      - zip -r search-photos.zip .
   build:
     commands:
-      - aws lambda update-function-code --function-name search-photos --region us-east-1 --zip-file fileb://search-photos.zip  --role arn:aws:iam::643696193634:role/formation_deploy_lambda
-artifacts:
-  files:
-  - unpacked.yaml
-  - packed.yaml
+      - aws s3 mv search-photos.zip s3://ooo2139-lambda-function
