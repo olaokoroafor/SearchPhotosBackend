@@ -12,12 +12,12 @@ INDEX = 'photos'
 client = boto3.client('lexv2-runtime')
 
 def search_domain(q):
-    client = OpenSearch(hosts=[{'host': HOST, 'port': 443}],
+    search_client = OpenSearch(hosts=[{'host': HOST, 'port': 443}],
         http_auth=get_awsauth(REGION, 'es'),
         use_ssl=True,
         verify_certs=True,
         connection_class=RequestsHttpConnection)
-    res = client.search(index=INDEX, body=q)
+    res = search_client.search(index=INDEX, body=q)
     print("printing results")
     print(res)
     hits = res['hits']['hits']
