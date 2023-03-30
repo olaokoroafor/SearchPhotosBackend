@@ -66,16 +66,16 @@ def lambda_handler(event, context):
     p = inflect.engine()
     if key1:
         if not p.singular_noun(key1):
-            search_terms.append(key1)
+            search_terms.append(key1.lower())
         else:
-            search_terms.append(key1)
-            search_terms.append(p.singular_noun(key1))
+            search_terms.append(key1.lower())
+            search_terms.append(p.singular_noun(key1).lower())
     if key2:
-        if not p.singular_noun(key2):
-            search_terms.append(key2)
+        if not p.singular_noun(key2.lower()):
+            search_terms.append(key2.lower())
         else:
-            search_terms.append(key2)
-            search_terms.append(p.singular_noun(key2))
+            search_terms.append(key2.lower())
+            search_terms.append(p.singular_noun(key2).lower())
     
     photos = []
     if len(search_terms) > 0:

@@ -84,6 +84,7 @@ def lambda_handler(event, context):
         raise e
         
     rek_labels = get_labels(bucket, key)
+    labels = [x.lower() for x in labels]
     labels.extend(rek_labels)
     search_json = {}
     search_json["objectKey"] = key
