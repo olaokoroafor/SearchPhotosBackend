@@ -2,6 +2,7 @@ import json
 from datetime import datetime
 import boto3
 import urllib.parse
+import inflect
 from opensearchpy import OpenSearch, RequestsHttpConnection
 from requests_aws4auth import AWS4Auth
 
@@ -59,17 +60,17 @@ def lambda_handler(event, context):
         str(e)
         
     search_terms = []
-    inflect = inflect.engine()
+    p = inflect.engine()
     if key1:
-        if not inflect.singular_noun(key1):
+        if not p.singular_noun(key1):
             search_terms.append(key1)
         else:
-            search_terms.append(inflect.singular_noun(key1))
+            search_terms.append(p.singular_noun(key1))
     if key2:
-        if not inflect.singular_noun(key2):
+        if not p.singular_noun(key2):
             search_terms.append(key2)
         else:
-            search_terms.append(inflect.singular_noun(key2))
+            search_terms.append(p.singular_noun(key2))
     
     photos = []
     if len(search_terms) > 0:
