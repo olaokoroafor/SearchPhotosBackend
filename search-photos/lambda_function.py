@@ -65,11 +65,13 @@ def lambda_handler(event, context):
         if not p.singular_noun(key1):
             search_terms.append(key1)
         else:
+            search_terms.append(key1)
             search_terms.append(p.singular_noun(key1))
     if key2:
         if not p.singular_noun(key2):
             search_terms.append(key2)
         else:
+            search_terms.append(key2)
             search_terms.append(p.singular_noun(key2))
     
     photos = []
