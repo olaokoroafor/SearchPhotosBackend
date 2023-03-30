@@ -12,6 +12,9 @@ INDEX = 'photos'
 # Define the client to interact with Lex
 client = boto3.client('lexv2-runtime')
 
+def remove_duplicates():
+    pass
+
 def search_domain(q):
     search_client = OpenSearch(hosts=[{'host': HOST, 'port': 443}],
         http_auth=get_awsauth(REGION, 'es'),
@@ -97,8 +100,14 @@ def lambda_handler(event, context):
         print(results)
         photos = []
         BASE_URL = "https://ooo2139-b2.s3.amazonaws.com/"
+        entries = {}
         for result in results:
-            photos.append({"url":str(BASE_URL+result["objectKey"]), "labels":result["labels"]})
+            if result["objectKey"] not in entries:
+                photos.append({"url":str(BASE_URL+result["objectKey"]), "labels":result["labels"]})
+                print(result["objectKey"])
+                entries.add(result["objectKey"])
+
+        
         search_response = {"results":photos}
     
         return {
