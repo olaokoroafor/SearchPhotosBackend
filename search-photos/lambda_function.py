@@ -100,7 +100,7 @@ def lambda_handler(event, context):
         print(results)
         photos = []
         BASE_URL = "https://ooo2139-b2.s3.amazonaws.com/"
-        entries = {}
+        entries = set()
         for result in results:
             if result["objectKey"] not in entries:
                 photos.append({"url":str(BASE_URL+result["objectKey"]), "labels":result["labels"]})
