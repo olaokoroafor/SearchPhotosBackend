@@ -36,6 +36,7 @@ def get_awsauth(region, service):
     
     
 def lambda_handler(event, context):
+    print("DEMO CHANGES")
     # TODO implement
     response = {}
 
@@ -63,7 +64,7 @@ def lambda_handler(event, context):
         str(e)
         
     search_terms = []
-    print(search_terms)
+    print("DEMO CHANGES")
     p = inflect.engine()
     if key1:
         if not p.singular_noun(key1):
