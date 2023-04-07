@@ -63,6 +63,7 @@ def lambda_handler(event, context):
         str(e)
         
     search_terms = []
+    print(search_terms)
     p = inflect.engine()
     if key1:
         if not p.singular_noun(key1):
